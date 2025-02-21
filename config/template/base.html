@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uz">
+<head>
+  {% include 'components/_stayles.html'%}
+</head>
+<body>
+    <header>
+    {% include 'components/_header.html'%}
+    </header>
+{% include 'components/_massages.html'%}
+
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field|title }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+
+    <main>
+        {% block main%}
+        {% endblock main%}
+    </main>
+
+
+    <footer>
+    {% include 'components/_footer.html'%}
+    </footer>
+
+
+    {% include 'components/_scripts.html'%}
+
+</body>
+</html>
